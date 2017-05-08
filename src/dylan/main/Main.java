@@ -9,18 +9,21 @@ import java.util.Map;
 public class Main {
     public static void main(String[] args) {
         System.out.println("Test");
-        HashMap<int[][], Integer> uniqueMap = new HashMap();
-        for(int i = 0; i < 10; i++){
+        HashMap<String, Integer> uniqueMap = new HashMap();
+        for(int i = 0; i < 1000; i++){
             RandomImage image = new RandomImage();
             image.generateRandomBinaryImage();
 
-            if(!uniqueMap.containsKey(image.grid)) {
-                uniqueMap.put(image.grid, RandomImage.id);
+            if(!uniqueMap.containsKey(image.gridAsString)) {
+                uniqueMap.put(image.gridAsString, RandomImage.id);
                 image.writeImage();
+            }
+            else{
+                System.out.println("DUPLICATE");
             }
         }
 
-        for (Map.Entry<int[][], Integer> entry : uniqueMap.entrySet()) {
+        for (Map.Entry<String, Integer> entry : uniqueMap.entrySet()) {
             System.out.println(entry.getKey()+" : "+entry.getValue());
         }
 

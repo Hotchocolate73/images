@@ -12,10 +12,12 @@ import java.io.IOException;
 public class RandomImage {
 
     public static int id = 0;
+    public static int writeId = 0;
     int a, r, g, b;
-    int width = 10, height = 10;
+    int width = 2, height = 2;
     BufferedImage img;
     int[][] grid = new int[height][width];
+    String gridAsString = "";
 
     public RandomImage(){
         id++;
@@ -54,18 +56,19 @@ public class RandomImage {
                 }
 
                 grid[y][x] = img.getRGB(x, y);
+                gridAsString += grid[y][x];
             }
         }
 
-        writeImage();
         System.out.println("Creating binary image with id " + id + " COMPLETE");
     }
 
     public void writeImage(){
+        writeId++;
         File f = null;
 
         try{
-            f = new File("D:\\Users\\Dylan\\Desktop\\images\\output" + id + ".png");
+            f = new File("D:\\Users\\Dylan\\Desktop\\images\\output" + writeId + "(" + id + ").png");
             ImageIO.write(img, "png", f);
         }catch(IOException e){
             System.out.println(e);
