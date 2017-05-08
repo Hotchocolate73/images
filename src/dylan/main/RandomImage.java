@@ -14,13 +14,15 @@ public class RandomImage {
     public static int id = 0;
     int a, r, g, b;
     int width = 10, height = 10;
+    BufferedImage img;
 
     public RandomImage(){
         id++;
     }
 
     public void generateRandomColourImage(){
-        BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+        System.out.println("Creating random colour image with id " + id);
+        img = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
         File f = null;
 
         for(int y = 0; y < height; y++){
@@ -40,10 +42,12 @@ public class RandomImage {
         }catch(IOException e){
             System.out.println(e);
         }
+        System.out.println("Creating random colour image with id " + id + " COMPLETE");
     }
 
     public void generateRandomBinaryImage(){
-        BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_BYTE_BINARY);
+        System.out.println("Creating binary image with id " + id);
+        img = new BufferedImage(width, height, BufferedImage.TYPE_BYTE_BINARY);
         File f = null;
 
         for(int y = 0; y < height; y++) {
@@ -57,10 +61,11 @@ public class RandomImage {
         }
 
         try{
-            f = new File("D:\\Users\\Dylan\\Desktop\\images\\output" + id + ".png");
-            ImageIO.write(img, "png", f);
+            f = new File("D:\\Users\\Dylan\\Desktop\\images\\output" + id + ".jpg");
+            ImageIO.write(img, "jpg", f);
         }catch(IOException e){
             System.out.println(e);
         }
+        System.out.println("Creating binary image with id " + id + " COMPLETE");
     }
 }
