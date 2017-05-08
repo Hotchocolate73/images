@@ -1,6 +1,7 @@
 package dylan.main;
 
 import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -30,6 +31,28 @@ public class RandomImage {
                 b = (int)(Math.random()*256);
                 int p = (a << 24) | (r << 16) | (g << 8) | b;
                 img.setRGB(x, y, p);
+            }
+        }
+
+        try{
+            f = new File("D:\\Users\\Dylan\\Desktop\\images\\output" + id + ".png");
+            ImageIO.write(img, "png", f);
+        }catch(IOException e){
+            System.out.println(e);
+        }
+    }
+
+    public void generateRandomBinaryImage(){
+        BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_BYTE_BINARY);
+        File f = null;
+
+        for(int y = 0; y < height; y++) {
+            for (int x = 0; x < width; x++) {
+                if (Math.random() < 0.5) {
+                    img.setRGB(x, y, Color.WHITE.getRGB());
+                } else {
+                    img.setRGB(x, y, Color.BLACK.getRGB());
+                }
             }
         }
 
