@@ -11,20 +11,23 @@ import java.io.IOException;
 public class RandomImage {
 
     public static int id = 0;
-    public RandomImage(){
-        int width = 100;
-        int height = 100;
+    int a, r, g, b;
+    int width = 10, height = 10;
 
+    public RandomImage(){
+        id++;
+    }
+
+    public void generateRandomColourImage(){
         BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
         File f = null;
 
         for(int y = 0; y < height; y++){
             for(int x = 0; x < width; x++){
-                int a = (int)(Math.random()*256);
-                int r = (int)(Math.random()*256);
-                int g = (int)(Math.random()*256);
-                int b = (int)(Math.random()*256);
-
+                a = (int)(Math.random()*256);
+                r = (int)(Math.random()*256);
+                g = (int)(Math.random()*256);
+                b = (int)(Math.random()*256);
                 int p = (a << 24) | (r << 16) | (g << 8) | b;
                 img.setRGB(x, y, p);
             }
@@ -36,6 +39,5 @@ public class RandomImage {
         }catch(IOException e){
             System.out.println(e);
         }
-        id++;
     }
 }

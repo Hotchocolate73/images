@@ -8,6 +8,7 @@ public class Main {
         System.out.println("Test");
         for(int i = 0; i < 100; i++){
             RandomImage image = new RandomImage();
+            image.generateRandomColourImage();
         }
     }
 }
